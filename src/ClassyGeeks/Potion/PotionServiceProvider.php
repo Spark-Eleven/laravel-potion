@@ -40,8 +40,10 @@ class PotionServiceProvider extends ServiceProvider
         // Handle config file
         // -- -- Get path
         $config_file = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
+
         // -- -- Merge from config
         $this->mergeConfigFrom($config_file, 'potion');
+
         // -- -- Tell laravel that we publish this file
         $this->publishes([
             $config_file => config_path('potion.php')
@@ -82,7 +84,7 @@ class PotionServiceProvider extends ServiceProvider
      */
     public function getConfig()
     {
-        return $this->app['config'];
+        return $this->app['config']['potion'];
     }
 
     /**
