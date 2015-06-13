@@ -21,7 +21,7 @@ class BladeHelpers
 {
 
     /**
-     * listStyles
+     * listStyles - create a list of compiled styles for insertion into the page header
      * @param $withCacheBust
      * @return bool|string
      */
@@ -35,14 +35,37 @@ class BladeHelpers
         // Cycle through all the assets and build a list of styles
         foreach($cache as $assetPath => $version) {
             if (substr(strtolower($assetPath),-4) == '.css') {
-
                 // build an asset entry
-                $results = $results . self::assetCss($assetPath, 'stylesheet', $cache);
-
+                $results = $results . self::assetCss($assetPath, 'stylesheet', $cache)."\n";
             }
         }
         return $results;
     }
+
+
+
+    /**
+     * listScripts - create a list of compiled scripts for insertion into page (footer, best practice)
+     * @param $withCacheBust
+     * @return bool|string
+     */
+    public static function listScripts($withCacheBust = true)
+    {
+        $results = '';
+
+        // Get cache
+        $cache = Cache::get('potion_assets', []);
+
+        // Cycle through all the assets and build a list of styles
+        foreach($cache as $assetPath => $version) {
+            if (substr(strtolower($assetPath),-3) == '.js') {
+                // build an asset entry
+                $results = $results . self::assetJs($assetPath, 'stylesheet', $cache)."\n";
+            }
+        }
+        return $results;
+    }
+
 
 
     /**
