@@ -233,7 +233,7 @@ class MakeAssetsCommand extends Command
                             }
 
                             // -- -- -- -- Add to cache
-                            $cache[$file_asset->getSourcePath()] = $this->versionFile($file_path);
+                            $cache[$output_path_modifier != '' ? $output_path_modifier . DIRECTORY_SEPARATOR . $file_asset->getSourcePath() : $file_asset->getSourcePath()] = $this->versionFile($file_path);
                         }
                     }
                 }
@@ -253,7 +253,7 @@ class MakeAssetsCommand extends Command
                     }
 
                     // -- -- Add to cache
-                    $cache[$potion['output']] = $this->versionFile($file_path);
+                    $cache[$output_path_modifier != '' ? $output_path_modifier . DIRECTORY_SEPARATOR . $potion['output'] : $potion['output']] = $this->versionFile($file_path);
                 }
             }
 
