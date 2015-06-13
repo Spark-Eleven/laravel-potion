@@ -33,12 +33,13 @@ use Assetic\Filter\Yui\JsCompressorFilter;
  */
 class MakeAssetsCommand extends Command
 {
+
     /**
-     * The console command name.
+     * The name and signature of the console command.
      *
      * @var string
      */
-    protected $name = 'potion:make-assets';
+    protected $signature = 'potion:make-assets {--debug : Display debugging info.}';
 
     /**
      * The console command description.
@@ -279,25 +280,5 @@ class MakeAssetsCommand extends Command
         }
 
         return true;
-    }
-
-    /**
-     * Get the console command arguments.
-     *
-     * @return array
-     */
-    protected function getArguments()
-    {
-        return [];
-    }
-
-    /**
-     * Get the console command options.
-     *
-     * @return array
-     */
-    protected function getOptions()
-    {
-        return [];
     }
 }
