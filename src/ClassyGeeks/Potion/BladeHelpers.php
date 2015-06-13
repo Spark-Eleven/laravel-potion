@@ -19,6 +19,32 @@ use Illuminate\Support\Facades\Cache;
  */
 class BladeHelpers
 {
+
+    /**
+     * listStyles
+     * @param $withCacheBust
+     * @return bool|string
+     */
+    public static function listStyles($withCacheBust = true)
+    {
+        $results = '';
+
+        // Get cache
+        $cache = Cache::get('potion_assets', []);
+
+        // Cycle through all the assets and build a list of styles
+        foreach($cache as $assetPath => $version) {
+            if (substr(strtolower($assetPath),-4) == '.css') {
+
+                // build an asset entry
+                $results = $results . self::assetCss($assetPath, 'stylesheet', $cache);
+
+            }
+        }
+        return $results;
+    }
+
+
     /**
      * Asset url
      * @param $name
@@ -50,7 +76,7 @@ class BladeHelpers
 
         // Version?
         if ($version) {
-            $ret .= "v={$cache[$name]}";
+            $ret .= "?v={$cache[$name]}";
         }
 
         return $ret;
