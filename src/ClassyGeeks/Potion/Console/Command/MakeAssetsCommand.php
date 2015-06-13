@@ -55,6 +55,13 @@ class MakeAssetsCommand extends Command
     protected $config;
 
     /**
+     * Display debug output
+     * @var bool
+     */
+    protected $debugOn = false;
+
+
+    /**
      * Create a new command instance.
      * @param $config
      * @return void
@@ -73,7 +80,7 @@ class MakeAssetsCommand extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         try {
 
@@ -81,6 +88,10 @@ class MakeAssetsCommand extends Command
             if ($this->config === false) {
                 throw new \Exception('Invalid potion configuration, please run "artisan vendor:publish" in your project root to public the potion config file.');
             }
+
+            $this->debugOn = ($this->option('debug') === true);
+
+            $this->debugMessage('potion:make-assets debug enabled');
 
             // Clean up paths
             $this->config['resource_path'] = rtrim($this->config['resource_path'], '/');
@@ -157,6 +168,17 @@ class MakeAssetsCommand extends Command
                 // -- Asset content
                 $asset_content = '';
 
+                // Assemble the output path with any path additions from the config file
+                $output_path = $this->cleanPath($this->config['assets_path']);
+                $output_path_modifier = $this->cleanPath($potion['output_path'], true, true);
+                if ($output_path_modifier != '') {
+                    $output_path = $output_path . DIRECTORY_SEPARATOR . $output_path_modifier;
+                }
+                if (!$this->makePath($output_path)) {
+                    throw new \Exception('Invalid asset output path: '.$output_path);
+                }
+
+
                 // -- Resources
                 foreach ($potion['resources'] as $resource) {
 
@@ -191,7 +213,7 @@ class MakeAssetsCommand extends Command
                     foreach ($file_assets as $file_asset) {
 
                         // -- -- -- File
-                        $file_path = $this->config['assets_path'] . DIRECTORY_SEPARATOR . $file_asset->getSourcePath();
+                        $file_path = $output_path . DIRECTORY_SEPARATOR . $file_asset->getSourcePath();
 
                         // -- -- -- Echo
                         $this->info("Processing resource file: {$file_path}");
@@ -220,7 +242,7 @@ class MakeAssetsCommand extends Command
                 if ($potion['output'] !== false) {
 
                     // -- -- Write to file
-                    $file_path = $this->config['assets_path'] . DIRECTORY_SEPARATOR . $potion['output'];
+                    $file_path = $output_path . DIRECTORY_SEPARATOR . $potion['output'];
 
                     // -- -- Echo
                     $this->info("Writing asset file: {$file_path}");
@@ -265,6 +287,9 @@ class MakeAssetsCommand extends Command
      */
     protected function makePath($path)
     {
+
+        $this->debugMessage('Making output path if required: '.$path);
+
         // Make
         if (!is_dir($path)) {
             if (mkdir($path) === false) {
@@ -280,5 +305,40 @@ class MakeAssetsCommand extends Command
         }
 
         return true;
+    }
+
+    /**
+     * Clean Path - remove starting and trailing directory seperators
+     *
+     * @param $path - segment of path to clean
+     * @param $cleanStart - clean the start of the supplied path segment
+     * @param $cleanEnd - clean the start of the supplied path segment
+     * @return $path
+     */
+    protected function cleanPath($path, $cleanStart = false, $cleanEnd = true)
+    {
+
+        if ($cleanStart) {
+            $path = ltrim($path, '/');
+            $path = ltrim($path, '\\');
+
+        }
+        if ($cleanEnd) {
+            $path = rtrim($path, '/');
+            $path = rtrim($path, '\\');
+        }
+        return $path;
+    }
+
+    /**
+     * Show Debug Message
+     *
+     * @param $message to display if debug is on
+     * @return void
+     */
+    protected function debugMessage($message)
+    {
+        if ($this->debugOn)
+            $this->line($message);
     }
 }
