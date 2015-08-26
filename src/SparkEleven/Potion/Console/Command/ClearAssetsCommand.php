@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright 2015 Classy Geeks llc. All Rights Reserved
- * http://classygeeks.com
+ * Copyright 2015 Spark Eleven llc. All Rights Reserved
+ * http://sparkeleven.com
  * MIT License:
  * http://opensource.org/licenses/MIT
  */
@@ -9,7 +9,7 @@
 /**
  * Namespace
  */
-namespace ClassyGeeks\Potion\Console\Command;
+namespace SparkEleven\Potion\Console\Command;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Console\Command;
@@ -17,7 +17,7 @@ use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class ClearAssetsCommand
- * @package ClassyGeeks\Potion\Console\Command
+ * @package SparkEleven\Potion\Console\Command
  */
 class ClearAssetsCommand extends Command
 {

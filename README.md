@@ -31,14 +31,14 @@ At this time Potion only supports Laravel 5. While Laravel 4 support was easy to
  	 - ScssphpFilter
  
 ###Installation
-1) Add 'classygeeks/potion' package to your composer.json file:
+1) Add 'sparkeleven/potion' package to your composer.json file:
 
 2) Add the Potion Service provider to your config/app.php file under the predefined "providers" array:
 ```php
 'providers' => [
 	'Illuminate\Foundation\Providers\ArtisanServiceProvider',
 	...
-	'ClassyGeeks\Potion\PotionServiceProvider'
+	'SparkEleven\Potion\PotionServiceProvider'
 	...
 	],
 ```

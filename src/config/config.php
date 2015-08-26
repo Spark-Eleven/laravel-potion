@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright 2015 Classy Geeks llc. All Rights Reserved
- * http://classygeeks.com
+ * Copyright 2015 Spark Eleven llc. All Rights Reserved
+ * http://sparkeleven.com
  * MIT License:
  * http://opensource.org/licenses/MIT
  */

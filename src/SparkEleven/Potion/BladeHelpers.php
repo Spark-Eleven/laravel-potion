@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright 2015 Classy Geeks llc. All Rights Reserved
- * http://classygeeks.com
+ * Copyright 2015 Spark Eleven llc. All Rights Reserved
+ * http://sparkeleven.com
  * MIT License:
  * http://opensource.org/licenses/MIT
  */
@@ -9,13 +9,13 @@
 /**
  * Namespace
  */
-namespace ClassyGeeks\Potion;
+namespace SparkEleven\Potion;
 
 use Illuminate\Support\Facades\Cache;
 
 /**
  * Class BladeHelpers
- * @package ClassyGeeks\Potion
+ * @package SparkEleven\Potion
  */
 class BladeHelpers
 {

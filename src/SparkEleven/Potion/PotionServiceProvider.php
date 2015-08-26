@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright 2015 Classy Geeks llc. All Rights Reserved
- * http://classygeeks.com
+ * Copyright 2015 Spark Eleven llc. All Rights Reserved
+ * http://sparkeleven.com
  * MIT License:
  * http://opensource.org/licenses/MIT
  */
@@ -9,11 +9,11 @@
 /**
  * Namespace
  */
-namespace ClassyGeeks\Potion;
+namespace SparkEleven\Potion;
 
 use Illuminate\Support\ServiceProvider;
-use ClassyGeeks\Potion\Console\Command\MakeAssetsCommand;
-use ClassyGeeks\Potion\Console\Command\ClearAssetsCommand;
+use SparkEleven\Potion\Console\Command\MakeAssetsCommand;
+use SparkEleven\Potion\Console\Command\ClearAssetsCommand;
 
 /**
  * Class PotionServiceProvider
@@ -104,7 +104,7 @@ class PotionServiceProvider extends ServiceProvider
             else {
                 $pattern = $compiler->createMatcher('potion_asset_url');
             }
-            return preg_replace($pattern, '$1<?php echo(\ClassyGeeks\Potion\BladeHelpers::assetUrl$2); ?>', $view);
+            return preg_replace($pattern, '$1<?php echo(\SparkEleven\Potion\BladeHelpers::assetUrl$2); ?>', $view);
         });
 
         // Potion Css
@@ -119,7 +119,7 @@ class PotionServiceProvider extends ServiceProvider
             else {
                 $pattern = $compiler->createMatcher('potion_asset_css');
             }
-            return preg_replace($pattern, '$1<?php echo(\ClassyGeeks\Potion\BladeHelpers::assetCss$2); ?>', $view);
+            return preg_replace($pattern, '$1<?php echo(\SparkEleven\Potion\BladeHelpers::assetCss$2); ?>', $view);
         });
 
         // Potion Js
@@ -134,7 +134,7 @@ class PotionServiceProvider extends ServiceProvider
             else {
                 $pattern = $compiler->createMatcher('potion_asset_js');
             }
-            return preg_replace($pattern, '$1<?php echo(\ClassyGeeks\Potion\BladeHelpers::assetJs$2); ?>', $view);
+            return preg_replace($pattern, '$1<?php echo(\SparkEleven\Potion\BladeHelpers::assetJs$2); ?>', $view);
         });
 
         // Potion Img
@@ -149,7 +149,7 @@ class PotionServiceProvider extends ServiceProvider
             else {
                 $pattern = $compiler->createMatcher('potion_asset_img');
             }
-            return preg_replace($pattern, '$1<?php echo(\ClassyGeeks\Potion\BladeHelpers::assetImg$2); ?>', $view);
+            return preg_replace($pattern, '$1<?php echo(\SparkEleven\Potion\BladeHelpers::assetImg$2); ?>', $view);
         });
     }
 
