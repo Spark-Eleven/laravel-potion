@@ -1,12 +1,12 @@
 {
-	"name": "classygeeks/potion",
-	"description": "Potion is a pure PHP asset manager for Laravel based off of Assetic.",
+	"name": "sparkeleven/potion",
+	"description": "Potion is a pure PHP asset manager for Laravel based off of Assetic, originally by classygeeks.",
 	"license": "MIT",
 	"authors": [
 		{
-			"name": "Classy Geeks llc.",
-			"email": "support@classygeeks.com",
-			"homepage": "http://classygeeks.com"
+			"name": "Spark Eleven.",
+			"email": "support@sparkeleven.com",
+			"homepage": "http://sparkeleven.com"
 		}
 	],
 	"keywords": [
@@ -53,7 +53,7 @@
     },
     "autoload": {
 	    "psr-0": {
-            "ClassyGeeks\\Potion\\": [
+            "SparkEleven\\Potion\\": [
 	            "src/"
             ]
         }
