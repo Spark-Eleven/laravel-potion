@@ -1,3 +1,5 @@
+This library is in the process of being deprecated.
+
 laravel-potion
 ===============
 Potion is a pure PHP asset manager for Laravel based off of [Assetic](https://github.com/kriswallsmith/assetic).
